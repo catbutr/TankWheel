@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TankWheel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="475" Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Submit" HorizontalAlignment="Left" Height="50" Margin="100,384,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77"/>
+        <TextBox HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="380" Margin="5,40,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="380" Margin="5,112,0,0"/>
+        <Label Content="Толщина основания соединения " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,10,0,0" Width="205"/>
+        <Label Content="Толщина крышки диска " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,86,0,0" Width="205"/>
+        <TextBox HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="380" Margin="5,188,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="380" Margin="5,259,0,0"/>
+        <Label Content="Толщина обода катка " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,158,0,0" Width="205"/>
+        <Label Content="Диаметр катка вместе с ободом " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,233,0,0" Width="205"/>
+        <TextBox HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="380" Margin="5,330,0,0"/>
+        <Label Content="Диаметр основания соединения " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,304,0,0" Width="205"/>
+
     </Grid>
 </Window>
