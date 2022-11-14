@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,7 +38,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -96,6 +100,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="TankWheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TankWheel.Model\TankWheel.Model\TankWheel.Model.csproj">
+      <Project>{db1dafb5-001f-46b6-b9c0-b2e1e8cb4e35}</Project>
+      <Name>TankWheel.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TankWheel.ViewModel\TankWheel.ViewModel.csproj">
+      <Project>{18d6dd45-3683-4215-a6ab-1137f6034abf}</Project>
+      <Name>TankWheel.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>8.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
