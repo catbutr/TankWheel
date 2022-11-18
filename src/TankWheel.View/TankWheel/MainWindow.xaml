@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TankWheel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="582.575" Width="990.247">
+        Title="MainWindow" Height="582.575" Width="990.247" Icon="TankWheel.ico">
 
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
