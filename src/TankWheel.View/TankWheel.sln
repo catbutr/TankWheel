@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorAPI", "InventorAPI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{85D418CD-CFDB-42F1-B781-E991467BF7C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "..\Builder\Builder.csproj", "{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,26 @@ Global
 		{85D418CD-CFDB-42F1-B781-E991467BF7C1}.Release|x64.Build.0 = Release|Any CPU
 		{85D418CD-CFDB-42F1-B781-E991467BF7C1}.Release|x86.ActiveCfg = Release|Any CPU
 		{85D418CD-CFDB-42F1-B781-E991467BF7C1}.Release|x86.Build.0 = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|x64.Build.0 = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Debug|x86.Build.0 = Debug|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|ARM.Build.0 = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|ARM64.Build.0 = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|x64.ActiveCfg = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|x64.Build.0 = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|x86.ActiveCfg = Release|Any CPU
+		{52397CF4-F5AF-433A-9C3A-3F4D13C4D37B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

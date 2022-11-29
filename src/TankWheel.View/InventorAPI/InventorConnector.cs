@@ -1,13 +1,21 @@
 ﻿using Services;
 using System;
 using System.Runtime.InteropServices;
+using TankWheel.Model;
 
 
 namespace InventorAPI
 {
     using Inventor;
-    public class InventorConnector
+    public class InventorConnector:IApiService
     {
+        private WheelValues _wheelValues;
+
+        public InventorConnector(WheelValues wheelValues)
+        {
+            _wheelValues = wheelValues;
+        }
+
         /// <summary>
         /// Ссылка на работу с документацией АПИ.
         /// </summary>
@@ -142,6 +150,11 @@ namespace InventorAPI
         private ObjectCollection CreateObjectCollection()
         {
             return InvApp.TransientObjects.CreateObjectCollection();
+        }
+
+        Point IApiService.CreatePoint(double x, double y)
+        {
+            throw new NotImplementedException();
         }
     }
 }

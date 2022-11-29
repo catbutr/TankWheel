@@ -16,6 +16,9 @@ using System.Globalization;
 using System.ComponentModel;
 using TankWheel.ViewModel;
 using TankWheel.Model;
+using InventorAPI;
+using Services;
+using Builder;
 
 namespace TankWheel
 {
@@ -30,6 +33,8 @@ namespace TankWheel
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private MainViewModel viewModel;
+        InventorConnector connector;
+        WheelBuilder builder;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
@@ -37,6 +42,8 @@ namespace TankWheel
             InitializeComponent();
             viewModel = new MainViewModel();
             viewModel.WheelValues = new WheelValues();
+            builder = new WheelBuilder(viewModel.WheelValues);
+            connector = new InventorConnector(viewModel.WheelValues);
             this.DataContext = viewModel.WheelValues;
         }        
 
@@ -131,6 +138,11 @@ namespace TankWheel
             {
                 submitButton.IsEnabled = true;
             }
+        }
+
+        private void submitButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CreateWheel();
         }
     }
 }

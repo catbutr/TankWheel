@@ -45,9 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIService.cs" />
+    <Compile Include="IAPIService.cs" />
+    <Compile Include="IBuildService.cs" />
     <Compile Include="ISketch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TankWheel.Model\TankWheel.Model\TankWheel.Model.csproj">
+      <Project>{db1dafb5-001f-46b6-b9c0-b2e1e8cb4e35}</Project>
+      <Name>TankWheel.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
