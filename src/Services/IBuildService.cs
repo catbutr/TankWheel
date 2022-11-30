@@ -9,6 +9,6 @@ namespace Services
 {
     public interface IBuildService
     {
-        void BuildWheel(WheelValues wheelParameters, IApiService apiService);
+        void BuildWheel(WheelValues wheelParameters);
     }
 }

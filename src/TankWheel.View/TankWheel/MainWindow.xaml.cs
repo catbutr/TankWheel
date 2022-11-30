@@ -70,10 +70,7 @@ namespace TankWheel
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            if(IsValid(this) == true)
-            {
-                submitButton.IsEnabled = true;
-            }
+            LoopVisualTree(this);
         }
 
         private void D1_TextBox_TextChanged(object sender, TextChangedEventArgs e)

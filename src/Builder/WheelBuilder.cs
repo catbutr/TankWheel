@@ -9,8 +9,8 @@ using InventorAPI;
 
 namespace Builder
 {
-    public class WheelBuilder
-    {
+	public class WheelBuilder:IBuildService
+	{
 		/// <summary>
 		/// Экземпляр класса для работы с API.
 		/// </summary>
@@ -24,7 +24,7 @@ namespace Builder
 		/// <summary>
 		/// Конструктор.
 		/// </summary>
-		public WheelBuilder(WheelValues wheelValues) 
+		public WheelBuilder(WheelValues wheelValues)
 		{
 			_wheelValues = wheelValues;
 		}
@@ -35,7 +35,19 @@ namespace Builder
 			_wheelValues = wheelValues;
 			_apiService = new InventorConnector(wheelValues);
 			_apiService.CreateDocument();
+			BuildSideWheel();
 		}
+
+		private void BuildSideWheel()
+		{
+			var mainRadius = _wheelValues.WheelDiameter / 2;
+			var centre = _apiService.CreatePoint(0, 0);
+			
+            var sketchXY = _apiService.CreateNewSketch(3, 0);
+			sketchXY.CreateCircle(centre, mainRadius);
+        }
+
+
 
 	}
 }

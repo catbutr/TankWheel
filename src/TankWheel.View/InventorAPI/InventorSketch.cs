@@ -35,9 +35,23 @@ namespace InventorAPI
             PlanarSketch.SketchLines.AddAsTwoPointRectangle(newPoint1, newPoint2);
         }
 
-        public void CreateTwoPointRectangle(Inventor.Point point1, Inventor.Point point2)
+        public void CreateCircle(Point point1, double radius)
         {
-            throw new System.NotImplementedException();
+            var newCenter = _transientGeometry.CreatePoint2d(point1.X, point1.Y);
+            PlanarSketch.SketchCircles.AddByCenterRadius(newCenter, radius);
+        }
+
+        void ISketch.CreateTwoPointRectangle(Inventor.Point point1, Inventor.Point point2)
+        {
+            var newPoint1 = _transientGeometry.CreatePoint2d(point1.X, point1.Y);
+            var newPoint2 = _transientGeometry.CreatePoint2d(point2.X, point2.Y);
+            PlanarSketch.SketchLines.AddAsTwoPointRectangle(newPoint1, newPoint2);
+        }
+
+        void ISketch.CreateCircle(Inventor.Point point1, double radius)
+        {
+            var newCenter = _transientGeometry.CreatePoint2d(point1.X, point1.Y);
+            PlanarSketch.SketchCircles.AddByCenterRadius(newCenter, radius);
         }
     }
 }

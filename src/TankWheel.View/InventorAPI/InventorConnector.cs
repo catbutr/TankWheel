@@ -78,10 +78,10 @@ namespace InventorAPI
         }
 
         /// <inheritdoc/>
-        public System.Windows.Point CreatePoint(double x, double y)
+        public Inventor.Point CreatePoint(double x, double y)
         {
-            var point = TransientGeometry.CreatePoint2d(x, y);
-            return new System.Windows.Point(point.X, point.Y);
+            var point = TransientGeometry.CreatePoint(x, y);
+            return point;
         }
 
         /// <inheritdoc/>

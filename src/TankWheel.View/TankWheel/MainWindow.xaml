@@ -7,7 +7,6 @@
         xmlns:local="clr-namespace:TankWheel" 
         xmlns:TankWheel.ViewModel="clr-namespace:TankWheel.ViewModel;assembly=TankWheel.ViewModel"
         xmlns:viewmodel="clr-namespace:TankWheel.ViewModel;assembly=TankWheel.ViewModel" 
-        d:DataContext="{d:DesignInstance TankWheel.ViewModel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="582.575" Width="990.247" Icon="TankWheel.ico">
 
