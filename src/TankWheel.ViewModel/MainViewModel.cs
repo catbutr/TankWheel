@@ -43,6 +43,10 @@ namespace TankWheel.ViewModel
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        /// <summary>
+        /// Получение характеристик катка
+        /// </summary>
         public WheelValues WheelValues
         {
             get
@@ -55,6 +59,9 @@ namespace TankWheel.ViewModel
             }
         }
 
+        /// <summary>
+        /// Создание катка
+        /// </summary>
         public void CreateWheel()
         {
             _builder.BuildWheel(_wheelValues);

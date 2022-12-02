@@ -24,7 +24,7 @@ namespace Services
         /// <param name="x">X координата.</param>
         /// <param name="y">Y координата.</param>
         /// <returns>Точку.</returns>
-        Point CreatePoint(double x, double y);
+        Point CreatePoint(double x, double y, double z);
 
         /// <summary>
         /// Создание эскиза.
@@ -33,6 +33,7 @@ namespace Services
         /// <param name="offset">Расстояние от плоскости.</param>
         /// <returns></returns>
         ISketch CreateNewSketch(int n, double offset);
+        ISketch CreateNewSketchOnSurface(Inventor.Point point);
 
         /// <summary>
         /// Выдавливание по эскизу.
@@ -40,5 +41,7 @@ namespace Services
         /// <param name="sketch">Эскиз.</param>
         /// <param name="distance">Расстояние выдавливания.</param>
         void Extrude(ISketch sketch, double distance);
+
+        void CircleArray(ISketch sketch, double angle, double count);
     }
 }

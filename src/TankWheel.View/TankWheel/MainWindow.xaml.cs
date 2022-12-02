@@ -45,6 +45,15 @@ namespace TankWheel
             builder = new WheelBuilder(viewModel.WheelValues);
             connector = new InventorConnector(viewModel.WheelValues);
             this.DataContext = viewModel.WheelValues;
+            //TEST
+            viewModel.WheelValues.FoundationNumberOfHoles = 16;
+            viewModel.WheelValues.CapNumberOfHoles = 12;
+            viewModel.WheelValues.WheelDiameter = 700;
+            viewModel.WheelValues.RimThickness = 100;
+            viewModel.WheelValues.WallHeight = 80;
+            viewModel.WheelValues.FoundationDiameter = 200;
+            viewModel.WheelValues.FoundationThickness = 44;
+            viewModel.WheelValues.CapThickness = 44;
         }        
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
