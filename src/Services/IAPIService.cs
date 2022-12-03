@@ -9,11 +9,6 @@ namespace Services
     public interface IApiService
     {
         /// <summary>
-        /// Возвращает единицы измерения для построения.
-        /// </summary>
-        double Unit { get; }
-
-        /// <summary>
         /// Создать документ API.
         /// </summary>
         void CreateDocument();
@@ -24,7 +19,7 @@ namespace Services
         /// <param name="x">X координата.</param>
         /// <param name="y">Y координата.</param>
         /// <returns>Точку.</returns>
-        Point CreatePoint(double x, double y, double z);
+        Point CreatePoint(double x, double y);
 
         /// <summary>
         /// Создание эскиза.
@@ -43,5 +38,6 @@ namespace Services
         void Extrude(ISketch sketch, double distance);
 
         void CircleArray(ISketch sketch, double angle, double count);
+        void ThroughExtrude(ISketch sketch, double distance);
     }
 }

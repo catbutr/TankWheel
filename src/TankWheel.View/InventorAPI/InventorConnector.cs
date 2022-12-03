@@ -9,13 +9,6 @@ namespace InventorAPI
     using Inventor;
     public class InventorConnector:IApiService
     {
-        private WheelValues _wheelValues;
-
-        public InventorConnector(WheelValues wheelValues)
-        {
-            _wheelValues = wheelValues;
-        }
-
         /// <summary>
         /// Ссылка на работу с документацией АПИ.
         /// </summary>
@@ -35,11 +28,6 @@ namespace InventorAPI
         /// Геометрия приложения.
         /// </summary>
         private TransientGeometry TransientGeometry { get; set; }
-
-        /// <inheritdoc/>
-        public double Unit => 10.0;
-
-        double IApiService.Unit => throw new NotImplementedException();
 
         /// <inheritdoc/>
         public void CreateDocument()
@@ -80,9 +68,9 @@ namespace InventorAPI
         }
 
         /// <inheritdoc/>
-        public Inventor.Point CreatePoint(double x, double y, double z)
+        public Inventor.Point CreatePoint(double x, double y)
         {
-            var point = TransientGeometry.CreatePoint(x, y,z);
+            var point = TransientGeometry.CreatePoint(x, y);
             return point;
         }
 
@@ -91,11 +79,10 @@ namespace InventorAPI
         {
             return new InventorSketch(MakeNewSketch(n, offset), TransientGeometry);
         }
-
         /// <inheritdoc/>
-        public ISketch CreateNewSketchOnSurface(Inventor.Point point)
+        public ISketch CreateNewSketchOnSurface()
         {
-            return new InventorSketch(MakeNewSketchOnSurface(point), TransientGeometry);
+            return new InventorSketch(MakeNewSketchOnSurface(), TransientGeometry);
         }
 
         /// <inheritdoc/>
@@ -107,6 +94,16 @@ namespace InventorAPI
             }
 
             Extrude(planarSketch.PlanarSketch, distance);
+        }
+
+        public void ThroughExtrude(ISketch sketch, double distance)
+        {
+            if (!(sketch is InventorSketch planarSketch))
+            {
+                throw new ArgumentException("Не подходящий экземпляр эскиза.");
+            }
+
+            ThroughExtrude(planarSketch.PlanarSketch, distance);
         }
 
         /// <inheritdoc/>
@@ -146,13 +143,14 @@ namespace InventorAPI
         /// </summary>
         /// <param name="point"> Точка</param>
         /// <returns></returns>
-        private PlanarSketch MakeNewSketchOnSurface(Inventor.Point point)
+        private PlanarSketch MakeNewSketchOnSurface()
         {
-            var objectCollection = CreateObjectCollection();
-            var Face = PartDefinition.SurfaceBodies[1].Faces[1];
-            var Plane = PartDefinition.WorkPlanes.AddByPointAndTangent(point,Face);
-            var Sketch = PartDefinition.Sketches.Add(Plane, false);
-            return Sketch;
+            var mainPlane = PartDefinition.WorkPlanes[2];
+            var offsetPlane = PartDefinition.WorkPlanes.AddByPlaneAndOffset(
+                mainPlane, 3, false);
+            offsetPlane.Visible = false;
+            var sketch = PartDefinition.Sketches.Add(offsetPlane, false);
+            return sketch;
         }
 
         /// <summary>
@@ -177,6 +175,27 @@ namespace InventorAPI
             {
                 extrudeDef.SetDistanceExtent(-distance,
                     PartFeatureExtentDirectionEnum.kNegativeExtentDirection);
+            }
+            var extrude = PartDefinition.Features.ExtrudeFeatures.Add(extrudeDef);
+            var objectCollection = CreateObjectCollection();
+            objectCollection.Add(extrude);
+        }
+
+        private void ThroughExtrude(PlanarSketch sketch, double distance)
+        {
+            sketch.Visible = false;
+            var sketchProfile = sketch.Profiles.AddForSolid();
+            var extrudeDef =
+                PartDefinition.Features.ExtrudeFeatures
+                    .CreateExtrudeDefinition(sketchProfile,
+                        PartFeatureOperationEnum.kCutOperation);
+            if (distance >= 0)
+            {
+                extrudeDef.SetThroughAllExtent(PartFeatureExtentDirectionEnum.kPositiveExtentDirection);
+            }
+            else
+            {
+                extrudeDef.SetThroughAllExtent(PartFeatureExtentDirectionEnum.kNegativeExtentDirection);
             }
             var extrude = PartDefinition.Features.ExtrudeFeatures.Add(extrudeDef);
             var objectCollection = CreateObjectCollection();
@@ -210,7 +229,7 @@ namespace InventorAPI
             return InvApp.TransientObjects.CreateObjectCollection();
         }
 
-        Point IApiService.CreatePoint(double x, double y, double z)
+        Point IApiService.CreatePoint(double x, double y)
         {
             throw new NotImplementedException();
         }
@@ -231,6 +250,11 @@ namespace InventorAPI
         }
 
         void IApiService.CircleArray(ISketch sketch, double angle, double count)
+        {
+            throw new NotImplementedException();
+        }
+
+        ISketch IApiService.CreateNewSketchOnSurface(Point point)
         {
             throw new NotImplementedException();
         }

@@ -43,7 +43,7 @@ namespace TankWheel
             viewModel = new MainViewModel();
             viewModel.WheelValues = new WheelValues();
             builder = new WheelBuilder(viewModel.WheelValues);
-            connector = new InventorConnector(viewModel.WheelValues);
+            connector = new InventorConnector();
             this.DataContext = viewModel.WheelValues;
             //TEST
             viewModel.WheelValues.FoundationNumberOfHoles = 16;
