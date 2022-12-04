@@ -4,12 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using CommunityToolkit;
 
 namespace TankWheel.Model
 {
     public class WheelValues : IDataErrorInfo
     {
+        /// <summary>
+        /// Находится ли число в интервале
+        /// </summary>
+        /// <param name="minValue">Нижний предел интервала</param>
+        /// <param name="maxValue">Верхний предел интервала</param>
+        /// <param name="inputValue">Проверяемое число</param>
+        /// <returns></returns>
+        public Boolean CompareBetween(double minValue, double maxValue, double inputValue)
+        {
+            if (minValue > maxValue)
+            {
+                double switchValue = minValue;
+                maxValue = minValue;
+                minValue = switchValue;
+            }
+
+            if (inputValue >= minValue && inputValue <= maxValue)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean CheckIfEven(double inputValue)
+        {
+            if (inputValue % 2 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Количество отверстий на крышке
         /// /// </summary>
@@ -49,33 +86,6 @@ namespace TankWheel.Model
         /// Диаметр катка вместе с ободом 
         /// </summary>
         private double _wheelDiameter;
-
-
-        public static Boolean CompareBetween(double minValue, double maxValue, double inputValue)
-        {
-            if (inputValue >= minValue && inputValue <= maxValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static Boolean CheckIfEven(double inputValue)
-        {
-            if (inputValue % 2 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
 
         /// <summary>
         /// Возвращает или задаёт количество отверстий на крышке
@@ -164,6 +174,9 @@ namespace TankWheel.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт высоту стенок
+        /// </summary>
         public double WallHeight
         {
             get
@@ -176,6 +189,9 @@ namespace TankWheel.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт диаметр катка
+        /// </summary>
         public double WheelDiameter
         {
             get
@@ -188,6 +204,12 @@ namespace TankWheel.Model
             }
         }
 
+
+        /// <summary>
+        /// Валидация данных
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
         public string this[string columnName]
         {
             get
