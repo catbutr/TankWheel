@@ -10,6 +10,10 @@ namespace ModelTests
     {
         private readonly WheelValues _wheelValues = new WheelValues();
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckCapThickness(double value)
@@ -21,6 +25,10 @@ namespace ModelTests
             Assert.AreEqual(value,actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckCapNumberOfHoles(int value)
@@ -32,6 +40,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckFoundationDiameter(double value)
@@ -43,6 +55,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckFoundationNumberOfHoles(int value)
@@ -54,6 +70,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckFoundationThickness(double value)
@@ -65,6 +85,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckRimThickness(double value)
@@ -76,6 +100,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckWallHeight(double value)
@@ -87,6 +115,10 @@ namespace ModelTests
             Assert.AreEqual(value, actual, $"value is not set up properly");
         }
 
+        /// <summary>
+        /// Проверка корректного присвоения и получения 
+        /// </summary>
+        /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
         public void CheckWheelDiameter(double value)
