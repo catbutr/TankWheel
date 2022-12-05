@@ -117,6 +117,9 @@ namespace TankWheel.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задаёт толщину основания соединения
+        /// </summary>
         public double FoundationThickness
         {
             get
@@ -214,7 +217,7 @@ namespace TankWheel.Model
         {
             get
             {
-                string error = String.Empty;
+                string error = string.Empty;
                 switch (columnName)
                 {
                     //N2
@@ -225,7 +228,7 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            error = "Кол-во отверстий должно быть в диапозоне 6-12";
+                            error = "Значение не задано корректно";
                         }
                         break;
                     //N1 
@@ -236,35 +239,35 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            error = "Кол-во отверстий должно быть в диапозоне 6-16";
+                            error = "Значение не задано корректно";
                         }
                         break;
                     //D2 Диаметр основания соединения
                     case "FoundationDiameter":
                         if (CompareBetween(200, 350, FoundationDiameter) == false)
                         {
-                            error = "Диаметер основания соединения должно быть в диапозоне 200-350мм";
+                            error = "Значение не задано корректно";
                         }
                         break;
                     //D1 Диаметр катка вместе с ободом   
                     case "WheelDiameter":
                         if (CompareBetween(600, 750, WheelDiameter) == false)
                         {
-                            error = "Диаметер катка должен быть в диапозоне 600-750мм";
+                            error = "Значение не задано корректно";
                         }
                         break;
                     //W1 Толщина основания соединения 
                     case "FoundationThickness":
                         if (CompareBetween(30, 70, FoundationThickness) == false)
                         {
-                            error = "Толщина основания соединения  должен быть в диапозоне 600-750мм";
+                            error = "ТоЗначение не задано корректно";
                         }
                         break;
                     //W2 Толщина крышки диска 
                     case "CapThickness":
                         if (CompareBetween(25, 50, CapThickness) == false)
                         {
-                            error = "Толщина крышки  должен быть в диапозоне 600-750мм";
+                            error = "Значение не задано корректно";
                         }
                         break;
                     //W3 Толщина обода катка 
@@ -273,14 +276,14 @@ namespace TankWheel.Model
                         {
                             if (CompareBetween(70, 100, RimThickness) == false)
                             {
-                                error = "Толщина крышки  должен быть в диапозоне 600-750мм";
+                                error = "Значение не задано корректно";
                             }
                         }
                         else
                         {
                             if (CompareBetween(101, 150, RimThickness) == false)
                             {
-                                error = "Толщина крышки  должен быть в диапозоне 600-750мм";
+                                error = "Значение не задано корректно";
                             }
                         }
                         break;
@@ -288,7 +291,7 @@ namespace TankWheel.Model
                     case "WallHeight":
                         if (CompareBetween(RimThickness - 20, RimThickness + 20, WallHeight) == false)
                         {
-                            error = "Толщина крышки  должен быть в диапозоне 600-750мм";
+                            error = "Значение не задано корректно";
                         }
                         break;
                 }
@@ -297,7 +300,9 @@ namespace TankWheel.Model
         }
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get {
+                throw new NotImplementedException();
+            }
         }
 
     }

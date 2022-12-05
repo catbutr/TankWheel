@@ -34,12 +34,11 @@ namespace ModelTests
         [DataRow(2, true)]
         [DataRow(137, false)]
         [DataRow(300, true)]
-        public void IsEvenTrue(double a, bool expected)
+        public void CheckIfEvenTest(double a, bool expected)
         {
             WheelValues _wheelValues = new WheelValues();
             bool result = _wheelValues.CheckIfEven(a);
             Assert.AreEqual(result, expected);
         }
-
     }
 }

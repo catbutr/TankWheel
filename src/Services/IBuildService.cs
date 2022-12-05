@@ -9,6 +9,10 @@ namespace Services
 {
     public interface IBuildService
     {
+        /// <summary>
+        /// Построение катка
+        /// </summary>
+        /// <param name="wheelParameters">Параметры катка</param>
         void BuildWheel(WheelValues wheelParameters);
     }
 }

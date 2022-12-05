@@ -181,6 +181,11 @@ namespace InventorAPI
             objectCollection.Add(extrude);
         }
 
+        /// <summary>
+        /// Выдавливание насквозь
+        /// </summary>
+        /// <param name="sketch">Эскиз</param>
+        /// <param name="distance">Значение, на которое происходит выдавливание</param>
         private void ThroughExtrude(PlanarSketch sketch, double distance)
         {
             sketch.Visible = false;
@@ -250,11 +255,6 @@ namespace InventorAPI
         }
 
         void IApiService.CircleArray(ISketch sketch, double angle, double count)
-        {
-            throw new NotImplementedException();
-        }
-
-        ISketch IApiService.CreateNewSketchOnSurface(Point point)
         {
             throw new NotImplementedException();
         }

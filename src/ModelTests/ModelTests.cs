@@ -11,11 +11,12 @@ namespace ModelTests
         private readonly WheelValues _wheelValues = new WheelValues();
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckCapThickness(double value)
         {
             var localValues = _wheelValues;
@@ -26,11 +27,12 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckCapNumberOfHoles(int value)
         {
             var localValues = _wheelValues;
@@ -41,11 +43,12 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckFoundationDiameter(double value)
         {
             var localValues = _wheelValues;
@@ -56,11 +59,12 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckFoundationNumberOfHoles(int value)
         {
             var localValues = _wheelValues;
@@ -71,7 +75,7 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
@@ -86,11 +90,12 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckRimThickness(double value)
         {
             var localValues = _wheelValues;
@@ -101,11 +106,12 @@ namespace ModelTests
         }
 
         /// <summary>
-        /// Проверка корректного получения 
+        /// Проверка корректного присвоения и получения 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckWallHeight(double value)
         {
             var localValues = _wheelValues;
@@ -121,6 +127,7 @@ namespace ModelTests
         /// <param name="value"></param>
         [DataTestMethod]
         [DataRow(-10)]
+        [DataRow(10)]
         public void CheckWheelDiameter(double value)
         {
             var localValues = _wheelValues;
