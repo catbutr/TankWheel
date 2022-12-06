@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using GalaSoft.MvvmLight;
 
 namespace TankWheel.Model
 {
@@ -50,12 +54,12 @@ namespace TankWheel.Model
         /// <summary>
         /// Количество отверстий на крышке
         /// /// </summary>
-        private int _capNumberOfHoles;
+        private int _capNumberOfHoles = 12;
 
         /// <summary>
         /// Толщина крышки диска 
         /// </summary>
-        private double _capThickness;
+        private double _capThickness = 25;
 
         /// <summary>
         /// Диаметр основания соединения 
@@ -90,121 +94,89 @@ namespace TankWheel.Model
         /// <summary>
         /// Возвращает или задаёт количество отверстий на крышке
         /// </summary>
+        [Range(6,12)]
+        [DefaultValue(12)]
         public int CapNumberOfHoles
         {
-            get
-            {
-                return _capNumberOfHoles;
-            }
-            set
-            {
-                _capNumberOfHoles = value;
-            }
+            get => _capNumberOfHoles;
+            set => _capNumberOfHoles = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт толщину крышки диска
         /// </summary>
+        [Range(25.0,50.0)]
+        [DefaultValue(25.0)]
         public double CapThickness
         {
-            get
-            {
-                return _capThickness;
-            }
-            set
-            {
-                _capThickness = value;
-            }
+            get => _capThickness;
+            set => _capThickness = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт толщину основания соединения
         /// </summary>
+        [Range(30.0,70.0)]
+        [DefaultValue(45.0)]
         public double FoundationThickness
         {
-            get
-            {
-                return _foundationThickness;
-            }
-            set
-            {
-                _foundationThickness = value;
-            }
+            get => _foundationThickness;
+            set => _foundationThickness = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт диаметр основания соединения
         /// </summary>
+        [Range(200.0,350.0)]
+        [DefaultValue(200.0)]
         public double FoundationDiameter
         {
-            get
-            {
-                return _foundationDiameter;
-            }
-            set
-            {
-                _foundationDiameter = value;
-            }
+            get => _foundationDiameter;
+            set => _foundationDiameter = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт количество отверстий в основании соединения
         /// </summary>
+        [Range(6, 16)]
+        [DefaultValue(16)]
         public int FoundationNumberOfHoles
         {
-            get
-            {
-                return _foundationNumberOfHoles;
-            }
-            set
-            {
-                _foundationNumberOfHoles = value;
-            }
+            get => _foundationNumberOfHoles;
+            set => _foundationNumberOfHoles = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт толщину обода
         /// </summary>
+        [Range(70.0, 150.0)]
+        [DefaultValue(100.0)]
         public double RimThickness
         {
-            get
-            {
-                return _rimThickness;
-            }
-            set
-            {
-                _rimThickness = value;
-            }
+            get => _rimThickness;
+            set => _rimThickness = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт высоту стенок
         /// </summary>
+        [Range(50.0, 170.0)]
+        [DefaultValue(120.0)]
         public double WallHeight
         {
-            get
-            {
-                return _wallHeight;
-            }
-            set
-            {
-                _wallHeight = value;
-            }
+            get => _wallHeight;
+            set => _wallHeight = value;
         }
 
         /// <summary>
         /// Возвращает или задаёт диаметр катка
         /// </summary>
+        [Range(600.0, 750.0)]
+        [DefaultValue(600.0)]
         public double WheelDiameter
         {
-            get
-            {
-                return _wheelDiameter;
-            }
-            set
-            {
-                _wheelDiameter = value;
-            }
+            get => _wheelDiameter;
+            set => _wheelDiameter = value;
         }
 
 
