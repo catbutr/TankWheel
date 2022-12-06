@@ -14,6 +14,7 @@ using InventorAPI;
 
 namespace TankWheel.ViewModel
 {
+    // TODO: xml
     public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {
         /// <summary>
@@ -35,6 +36,7 @@ namespace TankWheel.ViewModel
         }
 
         // Create the OnPropertyChanged method to raise the event
+        // TODO: не используется, зачем нужно?
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -49,14 +51,12 @@ namespace TankWheel.ViewModel
         /// </summary>
         public WheelValues WheelValues
         {
-            get
-            {
-                return _wheelValues;
-            }
-            set
-            {
+            // TODO: сделать autoproperty в свойствах, где нет особенной логики в get set (resharper сам подскажет)
+            // public WheelValues WheelValues { get; set; }
+            get =>
+                _wheelValues;
+            set =>
                 _wheelValues = value;
-            }
         }
 
         /// <summary>

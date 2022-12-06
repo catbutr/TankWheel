@@ -32,6 +32,9 @@ namespace TankWheel
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        // TODO: паттерн MVVM предполагает отсутствие code behind,
+        // т.е. все взаимодействия с view происходят через Binding с свойствами ViewModel
+        // нажатия кнопок обрабатываються через command, зачем тогда вообще ViewModel если тут View напрямую свзяанна с моделью?
         private MainViewModel viewModel;
         InventorConnector connector;
         WheelBuilder builder;
