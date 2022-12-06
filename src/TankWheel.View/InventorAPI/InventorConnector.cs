@@ -220,8 +220,9 @@ namespace InventorAPI
             var features = oCD.Features.CircularPatternFeatures;
             var zAxis = PartDefinition.WorkAxes[3];
             var objectCollection = CreateObjectCollection();
-            //TODO: длинная строка
-            CircularPatternFeatureDefinition circularDefinition = features.CreateDefinition(objectCollection, zAxis, true, count, angle, true);
+            //TODO: длинная строка+
+            var circularDefinition =
+                features.CreateDefinition(objectCollection, zAxis, true, count, angle, true);
             var circularPattern = features.AddByDefinition(circularDefinition);
             objectCollection.Add(circularPattern);
         }
@@ -235,30 +236,6 @@ namespace InventorAPI
             return InvApp.TransientObjects.CreateObjectCollection();
         }
 
-        //TODO: что за методы ниже с исключением? 
-        Point IApiService.CreatePoint(double x, double y)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IApiService.CreateDocument()
-        {
-            throw new NotImplementedException();
-        }
-
-        ISketch IApiService.CreateNewSketch(int n, double offset)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IApiService.Extrude(ISketch sketch, double distance)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IApiService.CircleArray(ISketch sketch, double angle, double count)
-        {
-            throw new NotImplementedException();
-        }
+        //TODO: что за методы ниже с исключением?+
     }
 }
