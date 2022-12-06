@@ -22,9 +22,9 @@ namespace TankWheel.ViewModel
         /// </summary>
         private WheelValues _wheelValues;
 
-        private WheelBuilder _builder;
+        private readonly WheelBuilder _builder;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Конструктор.
@@ -33,17 +33,6 @@ namespace TankWheel.ViewModel
         {
             _wheelValues = new WheelValues();
              _builder = new WheelBuilder(_wheelValues);
-        }
-
-        // Create the OnPropertyChanged method to raise the event
-        // TODO: не используется, зачем нужно?
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
         }
 
         /// <summary>
