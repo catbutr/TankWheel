@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:TankWheel" 
         xmlns:TankWheel.ViewModel="clr-namespace:TankWheel.ViewModel;assembly=TankWheel.ViewModel"
         xmlns:viewmodel="clr-namespace:TankWheel.ViewModel;assembly=TankWheel.ViewModel" 
+        d:DataContext="{d:DesignInstance TankWheel.ViewModel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="582.575" Width="990.247" Icon="TankWheel.ico">
 
@@ -16,94 +17,94 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="submitButton" Content="Принять" HorizontalAlignment="Left" Height="50" Margin="392,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14" IsEnabled="False" Click="submitButton_Click"/>
+        <Button x:Name="submitButton" Content="Принять" Command="{Binding BuildCommand}" HorizontalAlignment="Left" Height="50" Margin="392,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14" IsEnabled="False"/>
         <TextBox x:Name="W1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,93,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Толщина основания соединения должна быть в диапозоне 30-70мм" PreviewTextInput="TextBox_PreviewTextInput" LostFocus="LostFocusCheck" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="FoundationThickness" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                    <Binding Path="WheelValues.FoundationThickness" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Толщина основания соединения " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Width="227" FontSize="14"/>
         <TextBox x:Name="W2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,140,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Толщина крышки диска должна быть в диапозоне 25-50мм" PreviewTextInput="TextBox_PreviewTextInput" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="CapThickness" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.CapThickness" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Толщина крышки диска " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,137,0,0" Width="227" FontSize="14"/>
         <TextBox x:Name="W3_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,190,0,0" RenderTransformOrigin="1.048,0.407" PreviewTextInput="TextBox_PreviewTextInput" ToolTip="Толщина обода катка должна быть в диапозоне 100-150мм" TextChanged="W3_TextBox_TextChanged" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="RimThickness" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.RimThickness" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Толщина обода катка " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,187,0,0" Width="227" FontSize="14"/>
         <TextBox x:Name="W4_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,240,0,0" RenderTransformOrigin="1.048,0.407" PreviewTextInput="TextBox_PreviewTextInput" ToolTip="Длина внутренних стенок должна быть в диапозоне +-20мм от значения толщины обода катка" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="WallHeight" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.WallHeight" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Длина внутренних стенок" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Width="227" FontSize="14"/>
         <TextBox x:Name="D1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,292,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр катка должен быть в диапозоне 600-750мм" PreviewTextInput="TextBox_PreviewTextInput" TextChanged="D1_TextBox_TextChanged" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="WheelDiameter" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.WheelDiameter" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Диаметр катка вместе с ободом " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,289,0,0" Width="227" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="368" Margin="471,93,0,0" VerticalAlignment="Top" Width="487" Source="TankWheel.png"/>
         <TextBox x:Name="D2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,339,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр основания соединения должен быть в диапозоне 200-350мм" PreviewTextInput="TextBox_PreviewTextInput" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="FoundationDiameter" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.FoundationDiameter" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <Label Content="Диаметр основания соединения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,336,0,0" Width="227" FontSize="14"/>
         <TextBlock x:Name="T80_TextBlock" TextAlignment="Center" HorizontalAlignment="Left" Height="50" Margin="85,10,0,0" TextWrapping="Wrap" Text="ОПОРНЫЙ КАТОК ТАНКА Т-80" VerticalAlignment="Top" Width="822" FontSize="36"/>
         <TextBox x:Name="N1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,389,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на основании соединения должно быть четным и не больше 16" PreviewTextInput="TextBox_PreviewTextInput" LostKeyboardFocus="LostFocusCheck">
-            <TextBox.Text>
-                <Binding Path="FoundationNumberOfHoles" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
+                <TextBox.Text>
+                <Binding Path="WheelValues.FoundationNumberOfHoles" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
         </TextBox>
         <TextBox x:Name="N2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,435,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на крышке должно быть четным и не больше 16" PreviewTextInput="TextBox_PreviewTextInput" LostKeyboardFocus="LostFocusCheck">
-        <TextBox.Text>
-                <Binding Path="CapNumberOfHoles" 
-                 UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule />
-                    </Binding.ValidationRules>
-                </Binding>
-        </TextBox.Text>
+            <TextBox.Text>
+                <Binding Path="WheelValues.CapNumberOfHoles" 
+                     UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+            </TextBox.Text>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="15,381,0,0" TextWrapping="Wrap" Text="Количество отверстий на основании соединения" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="15,439,0,0" TextWrapping="Wrap" Text="Количество отверстий на крышке " VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>

@@ -27,36 +27,27 @@ namespace TankWheel
     //Апдейт значений W3/W4 при изменении D1/W3+
     //Разблокировка кнопки субмит+
 
+    ///TODO
+    ///Восстановление эффектов через viewmodel:
+    ///Отключение кнопки принять
+    ///Проверка на ошибки
+    ///Смена фокуса
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         // TODO: паттерн MVVM предполагает отсутствие code behind,
         // т.е. все взаимодействия с view происходят через Binding с свойствами ViewModel
         // нажатия кнопок обрабатываються через command, зачем тогда вообще ViewModel если тут View напрямую свзяанна с моделью?
         private MainViewModel viewModel;
-        InventorConnector connector;
-        WheelBuilder builder;
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
             viewModel = new MainViewModel();
-            viewModel.WheelValues = new WheelValues();
-            builder = new WheelBuilder(viewModel.WheelValues);
-            connector = new InventorConnector();
-            this.DataContext = viewModel.WheelValues;
-            //TEST
-            viewModel.WheelValues.FoundationNumberOfHoles = 16;
-            viewModel.WheelValues.CapNumberOfHoles = 12;
-            viewModel.WheelValues.WheelDiameter = 700;
-            viewModel.WheelValues.RimThickness = 100;
-            viewModel.WheelValues.WallHeight = 80;
-            viewModel.WheelValues.FoundationDiameter = 200;
-            viewModel.WheelValues.FoundationThickness = 44;
-            viewModel.WheelValues.CapThickness = 44;
+            this.DataContext = viewModel;
         }        
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -147,11 +138,6 @@ namespace TankWheel
             {
                 submitButton.IsEnabled = true;
             }
-        }
-
-        private void submitButton_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.CreateWheel();
         }
     }
 }
