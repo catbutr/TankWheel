@@ -15,170 +15,44 @@ namespace TankWheel.Model
     public class WheelValues : IDataErrorInfo
     {
         /// <summary>
-        /// Находится ли число в интервале
-        /// </summary>
-        /// <param name="minValue">Нижний предел интервала</param>
-        /// <param name="maxValue">Верхний предел интервала</param>
-        /// <param name="inputValue">Проверяемое число</param>
-        /// <returns></returns>
-        public Boolean CompareBetween(double minValue, double maxValue, double inputValue)
-        {
-            if (minValue > maxValue)
-            {
-                double switchValue = minValue;
-                maxValue = minValue;
-                minValue = switchValue;
-            }
-
-            if (inputValue >= minValue && inputValue <= maxValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public Boolean CheckIfEven(double inputValue)
-        {
-            if (inputValue % 2 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Количество отверстий на крышке
-        /// /// </summary>
-        private int _capNumberOfHoles = 12;
-
-        /// <summary>
-        /// Толщина крышки диска 
-        /// </summary>
-        private double _capThickness = 25;
-
-        /// <summary>
-        /// Диаметр основания соединения 
-        /// </summary>
-        private double _foundationDiameter;
-
-        /// <summary>
-        /// Толщина основания соединения 
-        /// </summary>
-        private double _foundationThickness;
-
-        /// <summary>
-        /// Количество отверстий на основании соединения
-        /// </summary>
-        private int _foundationNumberOfHoles;
-
-        /// <summary>
-        /// Толщина обода катка 
-        /// </summary>
-        private double _rimThickness;
-
-        /// <summary>
-        /// Длина внутренних стенок
-        /// </summary>
-        private double _wallHeight;
-
-        /// <summary>
-        /// Диаметр катка вместе с ободом 
-        /// </summary>
-        private double _wheelDiameter;
-
-        /// <summary>
         /// Возвращает или задаёт количество отверстий на крышке
         /// </summary>
-        [Range(6,12)]
-        [DefaultValue(12)]
-        public int CapNumberOfHoles
-        {
-            get => _capNumberOfHoles;
-            set => _capNumberOfHoles = value;
-        }
+        public int CapNumberOfHoles { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт толщину крышки диска
         /// </summary>
-        [Range(25.0,50.0)]
-        [DefaultValue(25.0)]
-        public double CapThickness
-        {
-            get => _capThickness;
-            set => _capThickness = value;
-        }
+        public double CapThickness { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт толщину основания соединения
         /// </summary>
-        [Range(30.0,70.0)]
-        [DefaultValue(45.0)]
-        public double FoundationThickness
-        {
-            get => _foundationThickness;
-            set => _foundationThickness = value;
-        }
+        public double FoundationThickness { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт диаметр основания соединения
         /// </summary>
-        [Range(200.0,350.0)]
-        [DefaultValue(200.0)]
-        public double FoundationDiameter
-        {
-            get => _foundationDiameter;
-            set => _foundationDiameter = value;
-        }
+        public double FoundationDiameter { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт количество отверстий в основании соединения
         /// </summary>
-        [Range(6, 16)]
-        [DefaultValue(16)]
-        public int FoundationNumberOfHoles
-        {
-            get => _foundationNumberOfHoles;
-            set => _foundationNumberOfHoles = value;
-        }
+        public int FoundationNumberOfHoles { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт толщину обода
         /// </summary>
-        [Range(70.0, 150.0)]
-        [DefaultValue(100.0)]
-        public double RimThickness
-        {
-            get => _rimThickness;
-            set => _rimThickness = value;
-        }
+        public double RimThickness { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт высоту стенок
         /// </summary>
-        [Range(50.0, 170.0)]
-        [DefaultValue(120.0)]
-        public double WallHeight
-        {
-            get => _wallHeight;
-            set => _wallHeight = value;
-        }
+        public double WallHeight { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт диаметр катка
         /// </summary>
-        [Range(600.0, 750.0)]
-        [DefaultValue(600.0)]
-        public double WheelDiameter
-        {
-            get => _wheelDiameter;
-            set => _wheelDiameter = value;
-        }
+        public double WheelDiameter { get; set; }
 
 
         /// <summary>
@@ -271,6 +145,50 @@ namespace TankWheel.Model
                 return error;
             }
         }
+
+        /// <summary>
+        /// Находится ли число в интервале
+        /// </summary>
+        /// <param name="minValue">Нижний предел интервала</param>
+        /// <param name="maxValue">Верхний предел интервала</param>
+        /// <param name="inputValue">Проверяемое число</param>
+        /// <returns></returns>
+        public Boolean CompareBetween(double minValue, double maxValue, double inputValue)
+        {
+            if (minValue > maxValue)
+            {
+                double switchValue = minValue;
+                maxValue = minValue;
+                minValue = switchValue;
+            }
+
+            if (inputValue >= minValue && inputValue <= maxValue)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Является ли число чётным
+        /// </summary>
+        /// <param name="inputValue">Проверяемое число</param>
+        /// <returns></returns>
+        public Boolean CheckIfEven(double inputValue)
+        {
+            if (inputValue % 2 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public string Error
         {
             get {

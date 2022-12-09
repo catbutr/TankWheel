@@ -23,17 +23,6 @@ using Builder;
 
 namespace TankWheel
 {
-
-    //TODO
-    //Апдейт значений W3/W4 при изменении D1/W3+
-    //Разблокировка кнопки субмит+
-
-    ///TODO
-    ///Восстановление эффектов через viewmodel:
-    ///Отключение кнопки принять
-    ///Проверка на ошибки
-    ///Смена фокуса
-
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -46,39 +35,7 @@ namespace TankWheel
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
-        }        
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!Char.IsDigit(e.Text, 0))
-            {
-                e.Handled = true;
-            }
-        }
-
-        void LoopVisualTree(DependencyObject obj)
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-
-                if (obj is TextBox)
-                {
-                    ((TextBox)obj).Text = null;
-                }
-                LoopVisualTree(VisualTreeHelper.GetChild(obj, i));
-            }
-
-        }
-
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoopVisualTree(this);
+            this.DataContext = new MainViewModel(new MessageBoxService());
         }
     }
 }

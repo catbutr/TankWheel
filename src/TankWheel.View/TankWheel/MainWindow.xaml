@@ -162,7 +162,7 @@
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="15,381,0,0" TextWrapping="Wrap" Text="Количество отверстий на основании соединения" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="15,439,0,0" TextWrapping="Wrap" Text="Количество отверстий на крышке " VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>
-        <Button x:Name="ClearButton" Content="Очистить" Command="{Binding ClearCommand}" HorizontalAlignment="Left" Height="50" Margin="758,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14" Click="ClearButton_Click"/>
+        <Button x:Name="ClearButton" Content="Очистить" Command="{Binding ClearCommand}" HorizontalAlignment="Left" Height="50" Margin="758,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14"/>
 
     </Grid>
 </Window>

@@ -23,13 +23,26 @@ using InventorAPI;
 
 namespace TankWheel.ViewModel
 {
-    // TODO: xml
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private readonly WheelBuilder _builder;
 
-        private bool isW3TextBoxEnabled = true;
-        private bool isW4TextBoxEnabled = true;
+        /// <summary>
+        /// Включен ли текстбокс для RimThickness 
+        /// </summary>
+        private bool isRimThicknessTextBoxEnabled = true;
+
+        /// <summary>
+        /// Включен ли текстбокс для WallHeight
+        /// </summary>
+        private bool isWallHeightTextBoxEnabled = true;
+
+        private readonly IMessageBoxService _messageBoxService;
+
+        /// <summary>
+        /// Характеристики катка
+        /// </summary>
+        private WheelValues _wheelValues;
 
         /// <summary>
         /// Команда создания катка.
@@ -41,54 +54,74 @@ namespace TankWheel.ViewModel
         /// </summary>
         public RelayCommand ClearCommand { get; }
 
+        ///<inheritdoc/>
+        public new event PropertyChangedEventHandler PropertyChanged;
+
+        ///<inheritdoc/>
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Конструктор.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IMessageBoxService messageBoxService)
         {
             WheelValues = new WheelValues();
             _builder = new WheelBuilder(WheelValues);
             SetWheelValues();
             this.BuildCommand = new RelayCommand(CreateWheel);
-            this.ClearCommand = new RelayCommand(SetWheelValues);
+            this.ClearCommand = new RelayCommand(ClearTextbox);
+            _messageBoxService = messageBoxService;
         }
 
         /// <summary>
         /// Получение характеристик катка
         /// </summary>
-        public WheelValues WheelValues {
-            // TODO: сделать autoproperty в свойствах, где нет особенной логики в get set (resharper сам подскажет)
-            // public WheelValues WheelValues { get; set; }
-            get; set; }
-
-        public bool isW3Enabled
+        public WheelValues WheelValues
         {
-            get =>
-                isW3TextBoxEnabled;
+            get => _wheelValues;
             set
             {
-                if (isW3TextBoxEnabled == value)
-                {
-                    return;
-                }
-                isW3TextBoxEnabled = value;
-                RaisePropertyChanged("isW3Enabled");
+                _wheelValues = value;
+                NotifyPropertyChanged();
             }
         }
 
-        public bool isW4Enabled
+        /// <summary>
+        /// Управление свойством включения textbox для RimThickness
+        /// </summary>
+        public bool isRimThicknessEnabled
         {
             get =>
-                isW4TextBoxEnabled;
+                isRimThicknessTextBoxEnabled;
             set
             {
-                if (isW4TextBoxEnabled == value)
+                if (isRimThicknessTextBoxEnabled == value)
                 {
                     return;
                 }
-                isW4TextBoxEnabled = value;
-                RaisePropertyChanged("isW4Enabled");
+                isRimThicknessTextBoxEnabled = value;
+                RaisePropertyChanged("isRimThicknessEnabled");
+            }
+        }
+
+        /// <summary>
+        /// Управление свойством включения textbox для WallHeight
+        /// </summary>
+        public bool isWallHeightEnabled
+        {
+            get =>
+                isWallHeightTextBoxEnabled;
+            set
+            {
+                if (isWallHeightTextBoxEnabled == value)
+                {
+                    return;
+                }
+                isWallHeightTextBoxEnabled = value;
+                RaisePropertyChanged("isWallHeighеEnabled");
             }
         }
 
@@ -106,12 +139,36 @@ namespace TankWheel.ViewModel
             WheelValues.FoundationThickness = 44;
             WheelValues.CapThickness = 44;
         }
+
         /// <summary>
         /// Создание катка
         /// </summary>
         public void CreateWheel()
         {
             _builder.BuildWheel(WheelValues);
+        }
+
+        /// <summary>
+        /// Очистка TextBox
+        /// </summary>
+        private void ClearTextbox()
+        {
+            if (_messageBoxService.Show("Очистить значения?",
+            "Очистить значения",
+            MessageButtons.OkCancel, MessageIcon.Warning))
+            {
+                WheelValues newValues = new WheelValues();
+                newValues.FoundationNumberOfHoles = 0;
+                newValues.CapNumberOfHoles = 0;
+                newValues.WheelDiameter = 0;
+                newValues.RimThickness = 0;
+                newValues.WallHeight = 0;
+                newValues.FoundationDiameter = 0;
+                newValues.FoundationThickness = 0;
+                newValues.CapThickness = 0;
+                WheelValues = newValues;
+                NotifyPropertyChanged();
+            }
         }
 
     }

@@ -235,7 +235,5 @@ namespace InventorAPI
         {
             return InvApp.TransientObjects.CreateObjectCollection();
         }
-
-        //TODO: что за методы ниже с исключением?+
     }
 }
