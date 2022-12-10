@@ -138,31 +138,16 @@ namespace UnitTests
         }
 
         /// <summary>
-        /// Проверка корректного присвоения и получения 
-        /// </summary>
-        /// <param name="value"></param>
-        [DataTestMethod]
-        [DataRow("Loren Ipsum")]
-        public void CheckError(string value)
-        {
-            var localValues = _wheelValues;
-            localValues.Error = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(value, actual, $"value is not set up properly");
-        }
-
-        /// <summary>
         /// Проверка error для WheelDiameter 
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(750, null)]
+        [DataRow(750, "")]
+        [DataRow(250, "Значение WheelDiameter не задано корректно")]
         public void CheckErrorWheelDiameter(double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.WheelDiameter = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.WheelDiameter = value;
+            Assert.AreEqual(exprected, _wheelValues["WheelDiameter"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -170,13 +155,13 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(100, null)]
-        public void CheckErrorWallHeight(double value, string exprected)
+        [DataRow(100, 100, "")]
+        [DataRow(100, 250, "Значение WallHeight не задано корректно")]
+        public void CheckErrorWallHeight(double prerequestValues, double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.WallHeight = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.RimThickness = prerequestValues;
+            _wheelValues.WallHeight = value;
+            Assert.AreEqual(exprected, _wheelValues["WallHeight"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -184,13 +169,13 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(80, null)]
-        public void CheckErrorRimThickness(double value, string exprected)
+        [DataRow(700, 100, "")]
+        [DataRow(700, 250, "Значение RimThickness не задано корректно")]
+        public void CheckErrorRimThickness(double prerequestValues, double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.RimThickness = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.WheelDiameter = prerequestValues;
+            _wheelValues.RimThickness = value;
+            Assert.AreEqual(exprected, _wheelValues["RimThickness"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -198,13 +183,12 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(45, null)]
+        [DataRow(45, "")]
+        [DataRow(250, "Значение FoundationThickness не задано корректно")]
         public void CheckErrorFoundationThickness(double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.FoundationThickness = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.FoundationThickness = value;
+            Assert.AreEqual(exprected, _wheelValues["FoundationThickness"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -212,13 +196,12 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(16, null)]
+        [DataRow(16, "")]
+        [DataRow(100, "Значение FoundationNumberOfHoles не задано корректно")]
         public void CheckErrorFoundationNumberOfHoles(int value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.FoundationNumberOfHoles = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.FoundationNumberOfHoles = value;
+            Assert.AreEqual(exprected, _wheelValues["FoundationNumberOfHoles"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -226,13 +209,12 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(200, null)]
+        [DataRow(200, "")]
+        [DataRow(100, "Значение FoundationDiameter не задано корректно")]
         public void CheckErrorFoundationDiameter(double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.FoundationDiameter = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.FoundationDiameter = value;
+            Assert.AreEqual(exprected, _wheelValues["FoundationDiameter"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -240,13 +222,12 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(35, null)]
+        [DataRow(35, "")]
+        [DataRow(245, "Значение CapThickness не задано корректно")]
         public void CheckErrorCapThickness(double value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.CapThickness = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.CapThickness = value;
+            Assert.AreEqual(exprected, _wheelValues["CapThickness"], $"value is not set up properly");
         }
 
         /// <summary>
@@ -254,13 +235,12 @@ namespace UnitTests
         /// </summary>
         /// <param name="value"></param>
         [DataTestMethod]
-        [DataRow(12, null)]
+        [DataRow(12, "")]
+        [DataRow(245, "Значение CapNumberOfHoles не задано корректно")]
         public void CheckErrorCapNumberOfHoles(int value, string exprected)
         {
-            var localValues = _wheelValues;
-            localValues.CapNumberOfHoles = value;
-            var actual = localValues.Error;
-            Assert.AreEqual(exprected, actual, $"value is not set up properly");
+            _wheelValues.CapNumberOfHoles = value;
+            Assert.AreEqual(exprected, _wheelValues["CapNumberOfHoles"], $"value is not set up properly");
         }
     }
 }

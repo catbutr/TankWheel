@@ -64,7 +64,7 @@ namespace TankWheel.Model
         {
             get
             {
-                Error = string.Empty;
+                string error = string.Empty;
                 switch (columnName)
                 {
                     //N2
@@ -75,7 +75,7 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            Error = "Значение CapNumberOfHoles не задано корректно";
+                            error = "Значение CapNumberOfHoles не задано корректно";
                         }
                         break;
                     //N1 
@@ -86,35 +86,35 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            Error = "Значение FoundationNumberOfHoles не задано корректно";
+                            error = "Значение FoundationNumberOfHoles не задано корректно";
                         }
                         break;
                     //D2 Диаметр основания соединения
                     case "FoundationDiameter":
                         if (CompareBetween(200, 350, FoundationDiameter) == false)
                         {
-                            Error = "Значение FoundationDiameter не задано корректно";
+                            error = "Значение FoundationDiameter не задано корректно";
                         }
                         break;
                     //D1 Диаметр катка вместе с ободом   
                     case "WheelDiameter":
                         if (CompareBetween(600, 750, WheelDiameter) == false)
                         {
-                            Error = "Значение WheelDiameter не задано корректно";
+                            error = "Значение WheelDiameter не задано корректно";
                         }
                         break;
                     //W1 Толщина основания соединения 
                     case "FoundationThickness":
                         if (CompareBetween(30, 70, FoundationThickness) == false)
                         {
-                            Error = "Значение FoundationThickness не задано корректно";
+                            error = "Значение FoundationThickness не задано корректно";
                         }
                         break;
                     //W2 Толщина крышки диска 
                     case "CapThickness":
                         if (CompareBetween(25, 50, CapThickness) == false)
                         {
-                            Error = "Значение CapThickness не задано корректно";
+                            error = "Значение CapThickness не задано корректно";
                         }
                         break;
                     //W3 Толщина обода катка 
@@ -123,14 +123,14 @@ namespace TankWheel.Model
                         {
                             if (CompareBetween(70, 100, RimThickness) == false)
                             {
-                                Error = "Значение RimThickness не задано корректно";
+                                error = "Значение RimThickness не задано корректно";
                             }
                         }
                         else
                         {
                             if (CompareBetween(101, 150, RimThickness) == false)
                             {
-                                Error = "Значение RimThickness не задано корректно";
+                                error = "Значение RimThickness не задано корректно";
                             }
                         }
                         break;
@@ -138,11 +138,11 @@ namespace TankWheel.Model
                     case "WallHeight":
                         if (CompareBetween(RimThickness - 20, RimThickness + 20, WallHeight) == false)
                         {
-                            Error = "Значение WallHeight не задано корректно";
+                            error = "Значение WallHeight не задано корректно";
                         }
                         break;
                 }
-                return Error;
+                return error;
             }
         }
 
@@ -189,7 +189,12 @@ namespace TankWheel.Model
             }
         }
 
-        public string Error { get; set; }
+        public string Error
+        {
+            get {
+                throw new NotImplementedException();
+            }
+        }
 
     }
 }
