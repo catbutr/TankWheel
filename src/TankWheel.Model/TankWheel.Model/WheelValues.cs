@@ -64,7 +64,7 @@ namespace TankWheel.Model
         {
             get
             {
-                string error = string.Empty;
+                Error = string.Empty;
                 switch (columnName)
                 {
                     //N2
@@ -75,7 +75,7 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение CapNumberOfHoles не задано корректно";
                         }
                         break;
                     //N1 
@@ -86,35 +86,35 @@ namespace TankWheel.Model
                         }
                         else
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение FoundationNumberOfHoles не задано корректно";
                         }
                         break;
                     //D2 Диаметр основания соединения
                     case "FoundationDiameter":
                         if (CompareBetween(200, 350, FoundationDiameter) == false)
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение FoundationDiameter не задано корректно";
                         }
                         break;
                     //D1 Диаметр катка вместе с ободом   
                     case "WheelDiameter":
                         if (CompareBetween(600, 750, WheelDiameter) == false)
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение WheelDiameter не задано корректно";
                         }
                         break;
                     //W1 Толщина основания соединения 
                     case "FoundationThickness":
                         if (CompareBetween(30, 70, FoundationThickness) == false)
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение FoundationThickness не задано корректно";
                         }
                         break;
                     //W2 Толщина крышки диска 
                     case "CapThickness":
                         if (CompareBetween(25, 50, CapThickness) == false)
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение CapThickness не задано корректно";
                         }
                         break;
                     //W3 Толщина обода катка 
@@ -123,14 +123,14 @@ namespace TankWheel.Model
                         {
                             if (CompareBetween(70, 100, RimThickness) == false)
                             {
-                                error = "Значение не задано корректно";
+                                Error = "Значение RimThickness не задано корректно";
                             }
                         }
                         else
                         {
                             if (CompareBetween(101, 150, RimThickness) == false)
                             {
-                                error = "Значение не задано корректно";
+                                Error = "Значение RimThickness не задано корректно";
                             }
                         }
                         break;
@@ -138,11 +138,11 @@ namespace TankWheel.Model
                     case "WallHeight":
                         if (CompareBetween(RimThickness - 20, RimThickness + 20, WallHeight) == false)
                         {
-                            error = "Значение не задано корректно";
+                            Error = "Значение WallHeight не задано корректно";
                         }
                         break;
                 }
-                return error;
+                return Error;
             }
         }
 
@@ -189,12 +189,7 @@ namespace TankWheel.Model
             }
         }
 
-        public string Error
-        {
-            get {
-                throw new NotImplementedException();
-            }
-        }
+        public string Error { get; set; }
 
     }
 }
