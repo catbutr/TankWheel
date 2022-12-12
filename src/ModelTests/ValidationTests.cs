@@ -2,7 +2,7 @@
 using TankWheel.Model;
 using System;
 
-namespace ModelTests
+namespace UnitTests
 {
     [TestClass]
     public class ValidationTests

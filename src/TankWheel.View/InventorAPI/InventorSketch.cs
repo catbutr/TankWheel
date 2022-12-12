@@ -46,6 +46,11 @@ namespace InventorAPI
             PlanarSketch.SketchCircles.AddByCenterRadius(newCenter, radius);
         }
 
+        /// <summary>
+        /// Создание окружности
+        /// </summary>
+        /// <param name="point1">Центр окружности</param>
+        /// <param name="radius">Радиус</param>
         void ISketch.CreateCircle(Inventor.Point point1, double radius)
         {
             var newCenter = _transientGeometry.CreatePoint2d(point1.X, point1.Y);

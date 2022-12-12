@@ -57,9 +57,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Builder\Builder.csproj">
+      <Project>{52397cf4-f5af-433a-9c3a-3f4d13c4d37b}</Project>
+      <Name>Builder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{85d418cd-cfdb-42f1-b781-e991467bf7c1}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TankWheel.Model\TankWheel.Model\TankWheel.Model.csproj">
       <Project>{db1dafb5-001f-46b6-b9c0-b2e1e8cb4e35}</Project>
       <Name>TankWheel.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TankWheel.ViewModel\TankWheel.ViewModel.csproj">
+      <Project>{18d6dd45-3683-4215-a6ab-1137f6034abf}</Project>
+      <Name>TankWheel.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TankWheel.View\InventorAPI\InventorAPI.csproj">
+      <Project>{49b11a48-25b3-4d5b-acca-4f89ae0c1e77}</Project>
+      <Name>InventorAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
