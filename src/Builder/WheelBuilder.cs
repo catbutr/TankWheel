@@ -14,7 +14,7 @@ namespace Builder
 		/// <summary>
 		/// Экземпляр класса для работы с API.
 		/// </summary>
-		public InventorConnector _apiService { get; set; }
+		public InventorConnector ApiService { get; set; }
 
 		/// <summary>
 		/// Параметры катка.
@@ -33,8 +33,8 @@ namespace Builder
 		public void BuildWheel(WheelValues wheelValues)
 		{
 			_wheelValues = wheelValues;
-			_apiService = new InventorConnector();
-			_apiService.CreateDocument();
+			ApiService = new InventorConnector();
+			ApiService.CreateDocument();
 			BuildRightWheel();
 			BuildLeftWheel();
 		}
@@ -55,7 +55,7 @@ namespace Builder
 			var foundationExtrudeValue = _wheelValues.FoundationThickness + innerExtrudeValue;
 			var captExtrudeValue = _wheelValues.CapThickness + foundationExtrudeValue;
 			///Точки
-			var mainCentre = _apiService.CreatePoint(0, 0);
+			var mainCentre = ApiService.CreatePoint(0, 0);
 			///Кол-во отверстий
 			var foundationHoles = _wheelValues.FoundationNumberOfHoles;
 			var capHoles = _wheelValues.CapNumberOfHoles;
@@ -86,7 +86,7 @@ namespace Builder
 			var foundationExtrudeValue = _wheelValues.FoundationThickness + innerExtrudeValue;
 			var captExtrudeValue = _wheelValues.CapThickness + foundationExtrudeValue;
 			///Точки
-			var mainCentre = _apiService.CreatePoint(0, 0);
+			var mainCentre = ApiService.CreatePoint(0, 0);
 			///Кол-во отверстий
 			var foundationHoles = _wheelValues.FoundationNumberOfHoles;
 			var capHoles = _wheelValues.CapNumberOfHoles;
@@ -108,10 +108,10 @@ namespace Builder
 		/// <param name="extrudeValue">Значение выдавливания</param>
 		private void BuildRing(double sketchOffset, Inventor.Point centre, double radius, double extrudeValue)
         {
-			var sketchXY = _apiService.CreateNewSketch(3, sketchOffset);
+			var sketchXY = ApiService.CreateNewSketch(3, sketchOffset);
 			sketchXY.CreateCircle(centre, radius);
 			sketchXY.CreateCircle(centre, radius - 40);
-			_apiService.Extrude(sketchXY, extrudeValue);
+			ApiService.Extrude(sketchXY, extrudeValue);
 		}
 
 		/// <summary>
@@ -122,9 +122,9 @@ namespace Builder
 		/// <param name="extrudeValue">Значение выдавливания</param>
 		private void BuildClosedCircle(double sketchOffset, Inventor.Point centre, double radius, double extrudeValue)
         {
-			var sketchXY = _apiService.CreateNewSketch(3, sketchOffset);
+			var sketchXY = ApiService.CreateNewSketch(3, sketchOffset);
 			sketchXY.CreateCircle(centre, radius);
-			_apiService.Extrude(sketchXY, extrudeValue);
+			ApiService.Extrude(sketchXY, extrudeValue);
 		}
 
 		/// <summary>
@@ -137,16 +137,15 @@ namespace Builder
 		/// <param name="extrudeValue"></param>
 		private void BuildCircularPatternByHand(double sketchOffset, Inventor.Point starterPoint, double holeRadius, double wholeRadius, double holeCount, double extrudeValue)
         {
-			var sketchXY = _apiService.CreateNewSketch(3, sketchOffset);
-			var degreeBetween = 360 / holeCount;
-			var newPoint = _apiService.CreatePoint(0,0);
+			var sketchXY = ApiService.CreateNewSketch(3, sketchOffset);
+			var newPoint = ApiService.CreatePoint(0,0);
 			for (int i = 0; i < holeCount; ++i)
             {
 				newPoint.X = Math.Cos(2 * Math.PI * i / holeCount) * (wholeRadius - 15) + starterPoint.X;
 				newPoint.Y = Math.Sin(2 * Math.PI * i / holeCount) * (wholeRadius - 15) + starterPoint.Y;
 				sketchXY.CreateCircle(newPoint, holeRadius);
 			}
-			_apiService.ThroughExtrude(sketchXY, extrudeValue);
+			ApiService.ThroughExtrude(sketchXY, extrudeValue);
 		}
 	}
 }

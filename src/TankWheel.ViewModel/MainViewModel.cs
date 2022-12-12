@@ -92,7 +92,7 @@ namespace TankWheel.ViewModel
         /// <summary>
         /// Управление свойством включения textbox для RimThickness
         /// </summary>
-        public bool isRimThicknessEnabled
+        public bool IsRimThicknessEnabled
         {
             get =>
                 isRimThicknessTextBoxEnabled;
@@ -110,7 +110,7 @@ namespace TankWheel.ViewModel
         /// <summary>
         /// Управление свойством включения textbox для WallHeight
         /// </summary>
-        public bool isWallHeightEnabled
+        public bool IsWallHeightEnabled
         {
             get =>
                 isWallHeightTextBoxEnabled;
@@ -138,6 +138,8 @@ namespace TankWheel.ViewModel
             WheelValues.FoundationDiameter = 200;
             WheelValues.FoundationThickness = 44;
             WheelValues.CapThickness = 44;
+            WheelValues.DiskDistance = 30;
+            WheelValues.DiskQuantity = 2;
         }
 
         /// <summary>
@@ -157,15 +159,19 @@ namespace TankWheel.ViewModel
             "Очистить значения",
             MessageButtons.OkCancel, MessageIcon.Warning))
             {
-                WheelValues newValues = new WheelValues();
-                newValues.FoundationNumberOfHoles = 0;
-                newValues.CapNumberOfHoles = 0;
-                newValues.WheelDiameter = 0;
-                newValues.RimThickness = 0;
-                newValues.WallHeight = 0;
-                newValues.FoundationDiameter = 0;
-                newValues.FoundationThickness = 0;
-                newValues.CapThickness = 0;
+                WheelValues newValues = new WheelValues
+                {
+                    FoundationNumberOfHoles = 0,
+                    CapNumberOfHoles = 0,
+                    WheelDiameter = 0,
+                    RimThickness = 0,
+                    WallHeight = 0,
+                    FoundationDiameter = 0,
+                    FoundationThickness = 0,
+                    CapThickness = 0,
+                    DiskDistance = 0,
+                    DiskQuantity = 1
+                };
                 WheelValues = newValues;
                 NotifyPropertyChanged();
             }

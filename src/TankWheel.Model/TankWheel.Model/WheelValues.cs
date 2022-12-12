@@ -54,6 +54,16 @@ namespace TankWheel.Model
         /// </summary>
         public double WheelDiameter { get; set; }
 
+        /// <summary>
+        /// Возвращает или задаёт расстояние между дисками катка
+        /// </summary>
+        public double DiskDistance { get; set; }
+
+        /// <summary>
+        /// Возвращает или задаёт количество дисков катка
+        /// </summary>
+        public int DiskQuantity { get; set; }
+
 
         /// <summary>
         /// Валидация данных
@@ -141,6 +151,21 @@ namespace TankWheel.Model
                             error = "Значение WallHeight не задано корректно";
                         }
                         break;
+                    //N4 Расстояние между дисками
+                    case "DiskDistance":
+                        if (CompareBetween(5,100, DiskDistance) == false)
+                        {
+                            error = "Значение DiskDistance не задано корректно";
+                        }
+                        break;
+                    //N4 Количество дисков
+                    case "DiskQuantity":
+                        if (CompareBetween(1, 10, DiskQuantity) == false)
+                        {
+                            error = "Значение DiskQuantity не задано корректно";
+                        }
+                        break;
+
                 }
                 return error;
             }

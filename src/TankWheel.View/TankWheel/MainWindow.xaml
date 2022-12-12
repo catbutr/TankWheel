@@ -9,26 +9,26 @@
         xmlns:viewmodel="clr-namespace:TankWheel.ViewModel;assembly=TankWheel.ViewModel" 
         d:DataContext="{d:DesignInstance TankWheel.ViewModel:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="582.575" Width="990.247" Icon="TankWheel.ico">
-        <Window.Resources>
-            <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="IsEnabled" Value="False"/>
-                <Style.Triggers>
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W1_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W2_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W3_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W4_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=D1_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=D2_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N1_TextBox}" Value="False"/>
-                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N2_TextBox}" Value="False"/>
-                        </MultiDataTrigger.Conditions>
-                        <Setter Property="IsEnabled" Value="True"/>
-                    </MultiDataTrigger>
-                </Style.Triggers>
-            </Style>
+        Title="MainWindow" Height="692.738" Width="990.247" Icon="TankWheel.ico">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W1_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W2_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W3_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=W4_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=D1_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=D2_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N1_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N2_TextBox}" Value="False"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
 
         <Style x:Key="W3_Style" TargetType="TextBox">
             <Setter Property="IsEnabled" Value="True"/>
@@ -56,113 +56,132 @@
     </Window.Resources>
 
 
-    <Grid Margin="0,0,2,0">
+    <Grid Margin="1,0,1,-31">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="923*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="submitButton" Content="Принять" Command="{Binding BuildCommand}" 
-                HorizontalAlignment="Left" Height="50" Margin="392,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14"
-                Style="{StaticResource ButtonStyle}"/>
-            <TextBox x:Name="W1_TextBox" HorizontalAlignment="Left"
-                     Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,93,0,0" RenderTransformOrigin="1.048,0.407" 
-                     ToolTip="Толщина основания соединения должна быть в диапозоне 30-70мм">
-                <TextBox.Text>
+                HorizontalAlignment="Left" Height="50" Margin="329,593,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14"
+                Style="{StaticResource ButtonStyle}" Grid.Column="1"/>
+        <TextBox x:Name="W1_TextBox" HorizontalAlignment="Left"
+                     Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,93,0,0" RenderTransformOrigin="1.048,0.407" 
+                     ToolTip="Толщина основания соединения должна быть в диапозоне 30-70мм" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.FoundationThickness" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Толщина основания соединения " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Width="227" FontSize="14"/>
-        <TextBox x:Name="W2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,140,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Толщина крышки диска должна быть в диапозоне 25-50мм">
-                <TextBox.Text>
+        <Label Content="Толщина основания соединения " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="W2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,140,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Толщина крышки диска должна быть в диапозоне 25-50мм" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.CapThickness" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Толщина крышки диска " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,137,0,0" Width="227" FontSize="14"/>
-        <TextBox x:Name="W3_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,190,0,0" 
+        <Label Content="Толщина крышки диска " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,137,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="W3_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,190,0,0" 
                  RenderTransformOrigin="1.048,0.407"
                  Style="{StaticResource W3_Style}"
-                 ToolTip="Толщина обода катка должна быть в диапозоне 100-150мм">
-                <TextBox.Text>
+                 ToolTip="Толщина обода катка должна быть в диапозоне 100-150мм" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.RimThickness" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Толщина обода катка " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,187,0,0" Width="227" FontSize="14"/>
-        <TextBox x:Name="W4_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,240,0,0" 
+        <Label Content="Толщина обода катка " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,187,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="W4_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,240,0,0" 
                  RenderTransformOrigin="1.048,0.407" 
                  Style="{StaticResource W4_Style}"
-                 ToolTip="Длина внутренних стенок должна быть в диапозоне +-20мм от значения толщины обода катка">
-                <TextBox.Text>
+                 ToolTip="Длина внутренних стенок должна быть в диапозоне +-20мм от значения толщины обода катка" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.WallHeight" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Длина внутренних стенок" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Width="227" FontSize="14"/>
-        <TextBox x:Name="D1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,292,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр катка должен быть в диапозоне 600-750мм">
-                <TextBox.Text>
+        <Label Content="Длина внутренних стенок" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,237,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="D1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,292,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр катка должен быть в диапозоне 600-750мм" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.WheelDiameter" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Диаметр катка вместе с ободом " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,289,0,0" Width="227" FontSize="14"/>
-        <Image HorizontalAlignment="Left" Height="368" Margin="471,93,0,0" VerticalAlignment="Top" Width="487" Source="TankWheel.png"/>
-        <TextBox x:Name="D2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,339,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр основания соединения должен быть в диапозоне 200-350мм">
-                <TextBox.Text>
+        <Label Content="Диаметр катка вместе с ободом " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,289,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="391" Margin="414,109,0,0" VerticalAlignment="Top" Width="487" Source="TankWheel.png" Grid.Column="1"/>
+        <TextBox x:Name="D2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,339,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Диаметр основания соединения должен быть в диапозоне 200-350мм" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.FoundationDiameter" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <Label Content="Диаметр основания соединения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,336,0,0" Width="227" FontSize="14"/>
-        <TextBlock x:Name="T80_TextBlock" TextAlignment="Center" HorizontalAlignment="Left" Height="50" Margin="85,10,0,0" TextWrapping="Wrap" Text="ОПОРНЫЙ КАТОК ТАНКА Т-80" VerticalAlignment="Top" Width="822" FontSize="36"/>
-        <TextBox x:Name="N1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,389,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на основании соединения должно быть четным и не больше 16">
-                <TextBox.Text>
+        <Label Content="Диаметр основания соединения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,336,0,0" Width="227" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="T80_TextBlock" TextAlignment="Center" HorizontalAlignment="Left" Height="50" Margin="28.46,10,0,0" TextWrapping="Wrap" Text="ОПОРНЫЙ КАТОК ТАНКА Т-80" VerticalAlignment="Top" Width="822" FontSize="36" Grid.Column="1"/>
+        <TextBox x:Name="N1_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,389,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на основании соединения должно быть четным и не больше 16" Grid.Column="1">
+            <TextBox.Text>
                 <Binding Path="WheelValues.FoundationNumberOfHoles" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="N2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="242,435,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на крышке должно быть четным и не больше 16">
+        <TextBox x:Name="N2_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185.46,435,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на крышке должно быть четным и не больше 16" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="WheelValues.CapNumberOfHoles" NotifyOnValidationError="True"
                      UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBlock HorizontalAlignment="Left" Margin="15,381,0,0" TextWrapping="Wrap" Text="Количество отверстий на основании соединения" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="15,439,0,0" TextWrapping="Wrap" Text="Количество отверстий на крышке " VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14"/>
-        <Button x:Name="ClearButton" Content="Очистить" Command="{Binding ClearCommand}" HorizontalAlignment="Left" Height="50" Margin="758,492,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="15,381,0,0" TextWrapping="Wrap" Text="Количество отверстий на основании соединения" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="15,439,0,0" TextWrapping="Wrap" Text="Количество отверстий на крышке " VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14" Grid.ColumnSpan="2"/>
+        <Button x:Name="ClearButton" Content="Очистить" Command="{Binding ClearCommand}" HorizontalAlignment="Left" Height="50" Margin="701,593,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.638,-0.77" FontSize="14" Grid.Column="1"/>
+        <TextBox x:Name="N3_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185,485,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на крышке должно быть четным и не больше 16" Grid.Column="1">
+            <Binding Path="WheelValues.DiskDistance" NotifyOnValidationError="True"
+                UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <DataErrorValidationRule />
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="15,485,0,0" TextWrapping="Wrap" Text="Расстояние между дисками" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="N4_TextBox" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="185,535,0,0" RenderTransformOrigin="1.048,0.407" ToolTip="Кол-во отверстий на крышке должно быть четным и не больше 16" Grid.Column="1">
+            <Binding Path="WheelValues.DiskQuantity" NotifyOnValidationError="True"
+                UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding.ValidationRules>
+                    <DataErrorValidationRule />
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="15,534,0,0" TextWrapping="Wrap" Text="Количество дисков" VerticalAlignment="Top" Height="34" Width="227" RenderTransformOrigin="-0.177,0.029" FontSize="14" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
