@@ -130,8 +130,7 @@ namespace Builder
 			///Выдавливания
 			var mainExtrudeValue = _wheelValues.RimThickness;
 			var innerExtrudeValue = _wheelValues.RimThickness - _wheelValues.WallHeight;
-			var foundationExtrudeValue = _wheelValues.FoundationThickness + innerExtrudeValue;
-			///Точки
+            ///Точки
 			var mainCentre = ApiService.CreatePoint(0, 0);
 			///Строительство
 			BuildClosedCircle(-offset, mainCentre, mainRadius, -mainExtrudeValue);
@@ -158,7 +157,7 @@ namespace Builder
 			var foundationHoles = _wheelValues.FoundationNumberOfHoles;
 			var capHoles = _wheelValues.CapNumberOfHoles;
 			//Строительство
-			BuildRightWheel(0,0);
+			BuildRightWheel(0, offset);
 			BuildRing(0, mainCentre, mainRadius, -mainExtrudeValue);
 			BuildClosedCircle(0, mainCentre, innerRadius, -innerExtrudeValue);
 			BuildClosedCircle(0, mainCentre, foundationRadius, -foundationExtrudeValue);
