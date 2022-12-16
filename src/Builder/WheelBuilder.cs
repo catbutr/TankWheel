@@ -35,19 +35,27 @@ namespace Builder
 			_wheelValues = wheelValues;
 			ApiService = new InventorConnector();
 			ApiService.CreateDocument();
+			var extrudeValue = _wheelValues.DiskDistance;
+			var rimThickness = _wheelValues.RimThickness;
 			var offset = 0.0;
 			if (_wheelValues.DiskQuantity == 1)
 			{
 				BuildOneDiskWheel();
 			}
+			else if (_wheelValues.DiskQuantity == 2)
+            {
+				offset = _wheelValues.DiskDistance;
+				BuildRightWheel(0, extrudeValue);
+				BuildLeftWheel(offset);
+			}
 			else
 			{
-				BuildRightWheel(offset);
+				BuildRightWheel(offset, _wheelValues.DiskDistance);
 				offset = _wheelValues.DiskDistance;
 				for (int i = 0; i < _wheelValues.DiskQuantity-2; i++)
 				{
-					BuildMiddleWheel(offset);
-					offset = offset + _wheelValues.DiskDistance + _wheelValues.RimThickness;
+					BuildMiddleWheel(offset, extrudeValue+ rimThickness);
+					offset = offset + extrudeValue + rimThickness;
 				}
 				BuildLeftWheel(offset);
 			}
@@ -56,7 +64,7 @@ namespace Builder
 		/// <summary>
 		/// Создание правого катка
 		/// </summary>
-		private void BuildRightWheel(double offset)
+		private void BuildRightWheel(double offset, double extrudeValue)
 		{
 			///Радиусы
 			var mainRadius = _wheelValues.WheelDiameter / 2;
@@ -81,7 +89,7 @@ namespace Builder
 			BuildCircularPatternByHand(offset, mainCentre, 5, foundationRadius, foundationHoles, 90);
 			BuildCircularPatternByHand(offset, mainCentre, 5, CapRadius, capHoles, 90);
 			BuildClosedCircle(offset, mainCentre, CapRadius - 25, captExtrudeValue + 5);
-			BuildClosedCircle(offset, mainCentre, innerRadius, -30);
+			BuildClosedCircle(offset, mainCentre, innerRadius, -extrudeValue);
 		}
 
 		/// <summary>
@@ -112,29 +120,22 @@ namespace Builder
 			BuildCircularPatternByHand(-offset, mainCentre, 5, foundationRadius, foundationHoles, -90);
 			BuildCircularPatternByHand(-offset, mainCentre, 5, CapRadius, capHoles, -90);
 			BuildClosedCircle(-offset, mainCentre, CapRadius - 25, -captExtrudeValue - 5);
-			//-(60 + mainExtrudeValue)
 		}
 
-		private void BuildMiddleWheel(double offset)
+		private void BuildMiddleWheel(double offset, double extrudeValue)
         {
 			///Радиусы
 			var mainRadius = _wheelValues.WheelDiameter / 2;
 			var innerRadius = (_wheelValues.WheelDiameter / 2) - 40;
-			var foundationRadius = _wheelValues.FoundationDiameter / 2;
-			var CapRadius = (_wheelValues.FoundationDiameter - 50) / 2;
 			///Выдавливания
 			var mainExtrudeValue = _wheelValues.RimThickness;
 			var innerExtrudeValue = _wheelValues.RimThickness - _wheelValues.WallHeight;
 			var foundationExtrudeValue = _wheelValues.FoundationThickness + innerExtrudeValue;
-			var captExtrudeValue = _wheelValues.CapThickness + foundationExtrudeValue;
 			///Точки
 			var mainCentre = ApiService.CreatePoint(0, 0);
-			///Кол-во отверстий
-			var foundationHoles = _wheelValues.FoundationNumberOfHoles;
-			var capHoles = _wheelValues.CapNumberOfHoles;
 			///Строительство
 			BuildClosedCircle(-offset, mainCentre, mainRadius, -mainExtrudeValue);
-			BuildClosedCircle(-offset, mainCentre, innerRadius, -30- mainExtrudeValue);
+			BuildClosedCircle(-offset, mainCentre, innerRadius, -extrudeValue);
 		}
 
 		private void BuildOneDiskWheel()
@@ -157,7 +158,7 @@ namespace Builder
 			var foundationHoles = _wheelValues.FoundationNumberOfHoles;
 			var capHoles = _wheelValues.CapNumberOfHoles;
 			//Строительство
-			BuildRightWheel(0);
+			BuildRightWheel(0,0);
 			BuildRing(0, mainCentre, mainRadius, -mainExtrudeValue);
 			BuildClosedCircle(0, mainCentre, innerRadius, -innerExtrudeValue);
 			BuildClosedCircle(0, mainCentre, foundationRadius, -foundationExtrudeValue);
