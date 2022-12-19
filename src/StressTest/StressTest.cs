@@ -22,7 +22,7 @@ namespace StressTest
             {
                 FoundationNumberOfHoles = 16,
                 CapNumberOfHoles = 12,
-                WheelDiameter = 750,
+                WheelDiameter = 700,
                 RimThickness = 100,
                 WallHeight = 80,
                 FoundationDiameter = 200,
