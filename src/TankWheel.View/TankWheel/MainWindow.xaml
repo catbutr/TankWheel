@@ -24,6 +24,8 @@
                         <Condition Binding="{Binding Path=(Validation.HasError), ElementName=D2_TextBox}" Value="False"/>
                         <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N1_TextBox}" Value="False"/>
                         <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N2_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N3_TextBox}" Value="False"/>
+                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=N4_TextBox}" Value="False"/>
                     </MultiDataTrigger.Conditions>
                     <Setter Property="IsEnabled" Value="True"/>
                 </MultiDataTrigger>

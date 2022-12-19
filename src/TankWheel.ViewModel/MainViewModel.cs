@@ -25,7 +25,7 @@ namespace TankWheel.ViewModel
 {
     public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        private readonly WheelBuilder _builder;
+        private readonly IBuildService _builder;
 
         /// <summary>
         /// Включен ли текстбокс для RimThickness 
