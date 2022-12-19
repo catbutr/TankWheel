@@ -15,6 +15,26 @@ namespace StressTest
         public static PartComponentDefinition PartDefinition { get; set; }
         public static TransientGeometry TransientGeometry { get; private set; }
         public static PartDocument PartDoc { get; set; }
+
+        static void Main(string[] args)
+        {
+            WheelValues newValues = new WheelValues
+            {
+                FoundationNumberOfHoles = 16,
+                CapNumberOfHoles = 12,
+                WheelDiameter = 750,
+                RimThickness = 100,
+                WallHeight = 80,
+                FoundationDiameter = 200,
+                FoundationThickness = 45,
+                CapThickness = 45,
+                DiskDistance = 30,
+                DiskQuantity = 2
+            };
+            TestApp(newValues);
+        }
+
+
         private static void TestApp(WheelValues wheelValues)
         {
             InvApp = null;

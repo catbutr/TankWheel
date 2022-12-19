@@ -14,7 +14,7 @@ namespace Builder
 		/// <summary>
 		/// Экземпляр класса для работы с API.
 		/// </summary>
-		public InventorConnector ApiService { get; set; }
+		public IApiService ApiService { get; set; }
 
 		/// <summary>
 		/// Параметры катка.
